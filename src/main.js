@@ -1,5 +1,7 @@
 import { createApp } from 'vue'
+import { createPinia } from 'pinia'
 import App from './App.vue'
+import router from './router'
 
 import PrimeVue from 'primevue/config'
 import ProductCard from './components/ProductCard.vue'
@@ -19,10 +21,11 @@ if (typeof window !== 'undefined') {
 }
 
 const app = createApp(App)
+const pinia = createPinia()
 
 // Теперь здесь только один вызов use
-app.use(PrimeVue, {
-  ripple: true
-})
+app.use(pinia)
+app.use(router)
+app.mount('#app')
 app.component('ProductCard', ProductCard)
 app.mount('#app')
